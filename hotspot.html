@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOTSPOT</title>
+  <link rel="icon" type="image/png" href="img/logo_pngns.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      z-index: 1000;
+    }
+
+    .menu-container {
+      max-width: 100vw;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu-logo {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111827;
+      user-select: none;
+      cursor: default;
+    }
+
+    nav a {
+      color: #374151;
+      font-weight: 600;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #2563eb;
+      outline: none;
+    }
+
+    .page-title {
+      max-width: 100vw;
+      margin: 1rem auto 0rem auto;
+      padding: 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #111827;
+      text-align: center;
+      user-select: none;
+    }
+
+    .page-title2 {
+      max-width: 100vw;
+      margin: 0rem auto 0.5rem auto;
+      padding: 0 1.5rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #111827;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Info Penting Running Text */
+    .info-penting-section {
+      width: 100vw;
+      max-width: 100vw;
+      background: #2563eb;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+
+    .info-penting-inner {
+      padding: 0.5rem 1.5rem;
+    }
+
+    .info-penting-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 0 0.3rem 0;
+      letter-spacing: 1px;
+    }
+
+    .running-text-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .running-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: runningText 18s linear infinite;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    @keyframes runningText {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Card grid */
+    .card-section {
+      margin-bottom: 2.5rem;
+      width: 100vw;
+      max-width: 100vw;
+      padding: 0 1.5rem;
+    }
+
+    .category-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      text-align: left;
+      letter-spacing: 1px;
+    }
+
+    .card-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: auto;
+      gap: 1rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.05);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      color: inherit;
+      user-select: none;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 20px 40px rgb(37 99 235 / 0.3);
+      outline: none;
+      z-index: 10;
+      border: 1px solid #2563eb;
+    }
+
+    .card:focus-visible {
+      box-shadow: 0 0 0 3px #2563eb;
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .card-image {
+      width: 100%;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .card:hover .card-image img,
+    .card:focus-visible .card-image img {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .card-text {
+      padding: 1.2rem 1.2rem 1.4rem 1.2rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #111827;
+    }
+
+    .card-desc {
+      font-weight: 400;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: #6b7280;
+    }
+
+    /* Banner Slider */
+    .banner-slider-container {
+      width: 100vw;
+      max-width: 100vw;
+      margin: 0 auto 4rem auto;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 32px rgb(0 0 0 / 0.10);
+      background: #fff;
+    }
+
+    .banner-slider {
+      display: flex;
+      width: 300vw;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .banner-slide {
+      width: 100vw;
+      height: 300px;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .banner-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .banner-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #eb2525;
+      opacity: 0.6;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .banner-dot.active {
+      opacity: 1;
+      background: #ffffff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1280px) {
+      .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      header .menu-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 1.25rem;
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+    <section style="width:100vw;max-width:100vw;background:#2563eb;padding:0;margin:0 0 0rem 0;">
+      <div style="padding:0rem 0rem;">
+        <div class="running-text-container" style="overflow:hidden;white-space:nowrap;position:relative;">
+          <div class="running-text" style="display:inline-block;white-space:nowrap;animation:runningText 18s linear infinite;font-size:0.8rem;color:#fff;">
+            Selamat datang di Portal Hotspot Aplikasi PN Gunung Sugih. | Pastikan Anda mengakses aplikasi resmi. | Hubungi petugas Admin IT (Dede atau Rian) jika mengalami kendala aplikasi atau WIFI.
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="menu-container" role="navigation" aria-label="Primary Navigation">
+        <!-- Logo di navbar -->
+        <div class="flex items-center gap-2">
+          <img src="img/logo_pngns.png" alt="Logo PN Gunung Sugih" style="height:36px;width:auto;">
+          <span class="menu-logo" tabindex="0">Pengadilan Negeri Gunung Sugih Kelas IB</span>
+        </div>
+        <nav>
+        <a href="hotspot.html"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="https://www.pn-gunungsugih.go.id/" target="_blank"><i class="fa-solid fa-globe"></i>Website</a>
+        <a href="http://192.168.1.2/sipp/login" target="_blank"><i class="fa-solid fa-gavel"></i>SIPP</a>
+        <a href="panduan.html" class="active"><i class="fa-solid fa-book-open"></i>Panduan</a>
+        </nav>
+      </div>
+    </header>
+
+
+  <main>
+    <h1 class="page-title" id="section1">Selamat Datang</h1>
+    <h1 class="page-title2" id="section1">Portal Hotspot Aplikasi</h1>
+
+    <!-- Kategori Kepaniteraan -->
+    <section class="card-section" id="kepaniteraan">
+      <div class="category-title">Kepaniteraan</div>
+      <div class="card-grid">
+        <!-- SIPP -->
+        <a href="http://192.168.1.2/sipp/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/sipp.jpeg" alt="SIPP" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">SIPP</h2>
+            <p class="card-desc">Sistem Informasi Penelusuran Perkara</p>
+          </div>
+        </a>
+        <!-- MIS -->
+        <a href="http://192.168.1.2/mis/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/MIS.png" alt="MIS" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">MIS</h2>
+            <p class="card-desc">Monitoring Implementasi SIPP</p>
+          </div>
+        </a>
+        <!-- SIPP Sinkron -->
+        <a href="http://192.168.1.2/mis/sinkronisasi" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/Sinkron.png" alt="SIPP Sinkron" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">SIPP Sinkron</h2>
+            <p class="card-desc">Sinkronisasi Data Perkara</p>
+          </div>
+        </a>
+        <!-- Eis -->
+        <a href="https://evaluasi.badilum.mahkamahagung.go.id/evaluasi3" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/eis.jpeg" alt="Eis" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Eis</h2>
+            <p class="card-desc">Evaluasi Implementasi SIPP</p>
+          </div>
+        </a>
+        <!-- E-Court -->
+        <a href="https://ecourt.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/ecourt.jpeg" alt="E-Court" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Court</h2>
+            <p class="card-desc">The Electronic Justice System</p>
+          </div>
+        </a>
+        <!-- E-Berpadu -->
+        <a href="https://eberpadu.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/eberpadu.jpeg" alt="E-Berpadu" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Berpadu</h2>
+            <p class="card-desc">Elektronik Berkas Pidana Terpadu</p>
+          </div>
+        </a>
+        <!-- Perkusi -->
+        <a href="https://eksekusi.badilum.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/perkusi.jpeg" alt="Perkusi" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Perkusi</h2>
+            <p class="card-desc">Pengawasan Elektronik Eksekusi</p>
+          </div>
+        </a>
+                <!-- Dirput -->
+        <a href="putusan3.mahkamahagung.go.id/pengadilan/profil/pengadilan/pn-gunung-sugih.html" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/dirput.png" alt="Dirput" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Dirput</h2>
+            <p class="card-desc">Direktori Putusan</p>
+          </div>
+        </a>
+        <!-- E-Raterang -->
+        <a href="https://eraterang.badilum.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/eraterang.jpeg" alt="E-Raterang" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Raterang</h2>
+            <p class="card-desc">Elektronik Surat Keterangan</p>
+          </div>
+        </a>
+        <!-- Siwas MA -->
+        <a href="https://siwas.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/siwas.jpeg" alt="Siwas MA" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Siwas MA</h2>
+            <p class="card-desc">Sistem Informasi Pengawasan</p>
+          </div>
+        </a>
+        <!-- JDIH -->
+        <a href="https://jdih.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/jdih.png" alt="JDIH" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">JDIH</h2>
+            <p class="card-desc">Jaringan Dokumentasi dan Informasi Hukum</p>
+          </div>
+        </a>
+        <!-- E-Pelaporan -->
+        <a href="https://pelaporan.badilum.mahkamahagung.go.id/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/epelaporan.png" alt="E-Pelaporan" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Pelaporan</h2>
+            <p class="card-desc">Pelaporan Elektronik BADILUM</p>
+          </div>
+        </a>
+        <!-- SI-Super -->
+        <a href="https://esurvey.badilum.mahkamahagung.go.id/index.php/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/sisuper.png" alt="SI-Super" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">SI-Super</h2>
+            <p class="card-desc">Sistem Survei Pelayanan Elektronik</p>
+          </div>
+        </a>
+                <!-- Card 5 -->
+        <a href="https://www.lapor.go.id/" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title5 desc5">
+          <div class="card-image">
+            <img src="img/aplikasi/lapor.jpeg" alt="Card 5" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title5">Lapor</h2>
+            <p class="card-desc" id="desc5">Layanan Aspirasi dan Pengaduan Online Rakyat</p>
+          </div>
+        </a>
+        <!-- Zona Integritas -->
+        <a href="https://pmpzi.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/ppmzi.jpeg" alt="Zona Integritas" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Zona Integritas</h2>
+            <p class="card-desc">Pembangunan Zona Integritas</p>
+          </div>
+        </a>
+        <!-- Ampuh -->
+        <a href="https://ampuh.mahkamahagung.go.id/beranda" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/ampuh.jpeg" alt="Ampuh" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Ampuh</h2>
+            <p class="card-desc">Sertifikasi Mutu Pengadilan Unggul & Tangguh</p>
+          </div>
+        </a>
+        <!-- Card 16 -->
+        <a href="https://placehold.co/600x140?text=Card+16" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title16 desc16">
+          <div class="card-image">
+            <img src="img/aplikasi/pngns.jpeg" alt="Card 16" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title16">PNGNS</h2>
+            <p class="card-desc" id="desc16">Website PN Gunung Sugih</p>
+          </div>
+        </a>
+        <!-- Card 12 -->
+        <a href="https://www.mahkamahagung.go.id/id" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title12 desc12">
+          <div class="card-image">
+            <img src="img/aplikasi/MA.png" alt="Card 12" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title12">Mahkamah Agung</h2>
+            <p class="card-desc" id="desc12">Mahkamah Agung</p>
+          </div>
+        </a>
+        <a href="https://badilum.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title12 desc12">
+          <div class="card-image">
+            <img src="img/aplikasi/Badilum.png" alt="Card 12" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title12">Badilum</h2>
+            <p class="card-desc" id="desc12">Direktorat Jenderal Badan Peradilan Umum</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <!-- Banner Slider Otomatis Full CSS -->
+    <div class="banner-slider-container">
+      <div id="banner-slider" class="banner-slider">
+        <div class="banner-slide" style="background-image:url('img/banner/Banner\ 1.jpg');"></div>
+        <div class="banner-slide" style="background-image:url('img/banner/Banner\ 2.jpg');"></div>
+        <div class="banner-slide" style="background-image:url('img/banner/Banner\ 3.jpg');"></div>
+        <div class="banner-slide" style="background-image:url('img/banner/Banner\ 4.jpg');"></div>
+
+      </div>
+      <div class="banner-dots">
+        <div class="banner-dot" data-banner="0"></div>
+        <div class="banner-dot" data-banner="1"></div>
+        <div class="banner-dot" data-banner="2"></div>
+        <div class="banner-dot" data-banner="3"></div>
+      </div>
+    </div>
+    <script>
+      // Banner slider full CSS logic
+      const slider = document.getElementById('banner-slider');
+      const dots = document.querySelectorAll('.banner-dot');
+      let idx = 0;
+      function showSlide(i) {
+        idx = i;
+        slider.style.transform = `translateX(-${i * 100}vw)`;
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+      }
+      dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+      setInterval(() => showSlide((idx + 1) % 3), 3500);
+      showSlide(0);
+    </script>
+    <!-- Kategori Kesekretariatan -->
+    <section class="card-section" id="kesekretariatan">
+      <div class="category-title">Kesekretariatan</div>
+      <div class="card-grid">
+        <!-- SIKEP -->
+        <a href="https://sikep.mahkamahagung.go.id/site/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/sikep.jpeg" alt="SIKEP" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">SIKEP</h2>
+            <p class="card-desc">Sistem Informasi Kepegawaian</p>
+          </div>
+        </a>
+        <!-- PTSP+ -->
+        <a href="http://192.168.1.2/ptsp/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/PTSP.png" alt="PTSP+" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">PTSP+</h2>
+            <p class="card-desc">Pelayanan Surat Masuk & Keluar</p>
+          </div>
+        </a>
+        <!-- Sakti -->
+        <a href="https://sakti.kemenkeu.go.id/LL-Zg7BviiuXviBn9TvfiA" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/sakti.jpeg" alt="Sakti" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Sakti</h2>
+            <p class="card-desc">Sistem Aplikasi Keuangan Tingkat Instansi</p>
+          </div>
+        </a>
+        <!-- Monsakti -->
+        <a href="https://monsakti.kemenkeu.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/monsakti.jpeg" alt="Monsakti" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Monsakti</h2>
+            <p class="card-desc">Monitoring SAKTI</p>
+          </div>
+        </a>
+        <!-- E-Bima -->
+        <a href="https://e-bima.mahkamahagung.go.id/login" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/ebima.jpeg" alt="E-Bima" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Bima</h2>
+            <p class="card-desc">Electronic Budgeting Implementation Monitoring and Accountability</p>
+          </div>
+        </a>
+        <!-- Satu DJA -->
+        <a href="https://satudja.kemenkeu.go.id/login?q=0e8b2" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/satudja.jpeg" alt="Satu DJA" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Satu DJA</h2>
+            <p class="card-desc">Sistem Aplikasi Terpadu Direktorat Jenderal Anggaran</p>
+          </div>
+        </a>
+        <!-- E-Plans -->
+        <a href="https://eiplans.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/eplains.jpeg" alt="E-Plans" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Plans</h2>
+            <p class="card-desc">Electronic Integrated Planning System</p>
+          </div>
+        </a>
+        <!-- Komdanas -->
+        <a href="https://komdanas.mahkamahagung.go.id/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/komdanas.png" alt="Komdanas" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">Komdanas</h2>
+            <p class="card-desc">Komunikasi Data Nasional</p>
+          </div>
+        </a>
+        <!-- E-Monev -->
+        <a href="https://e-monev.bappenas.go.id/portal/" class="card" target="_blank" rel="noopener noreferrer">
+          <div class="card-image">
+            <img src="img/aplikasi/emonev.png" alt="E-Monev" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title">E-Monev</h2>
+            <p class="card-desc">Pelaporan & Pengendalian Rencana Pembangunan Nasional</p>
+          </div>
+        </a>
+                                <!-- Card 5 -->
+        <a href="https://semar.mahkamahagung.go.id/login" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title5 desc5">
+          <div class="card-image">
+            <img src="img/aplikasi/semar.jpeg" alt="Card 5" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title5">Semar</h2>
+            <p class="card-desc" id="desc5">Sistem Evaluasi & Monitoring Akutabilitas Kinerja</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Kategori Inovasi -->
+    <section class="card-section" id="inovasi">
+      <div class="category-title">Inovasi</div>
+      <div class="card-grid">
+
+                <!-- Card 13 -->
+        <a href="https://api.whatsapp.com/send/?phone=6281379122344&text=PTSP+PN+GUNUNG+SUGIH+SIAP+MEMBANTU+ANDA+&type=phone_number&app_absent=0" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title13 desc13">
+          <div class="card-image">
+            <img src="img/aplikasi/wa.png" alt="Card 13" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title13">WA Gunsu</h2>
+            <p class="card-desc" id="desc13">Pelayanan PTSP Online</p>
+          </div>
+        </a>
+        <!-- Card 14 -->
+        <a href="https://apriprogram.github.io/SIMABARA/index.html" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title14 desc14">
+          <div class="card-image">
+            <img src="img/aplikasi/Simabara.png" alt="Card 14" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title14">Simabara</h2>
+            <p class="card-desc" id="desc14">Sistem Penerjemah Berbasis Suara.</p>
+          </div>
+        </a>
+        <!-- Card 15 -->
+        <a href="https://apriprogram.github.io/ABADI/ABADI.html" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title15 desc15">
+          <div class="card-image">
+            <img src="img/aplikasi/Abadi.png" alt="Card 15" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title15">Abadi</h2>
+            <p class="card-desc" id="desc15">Aplikasi Bantu Dengar Disabilitas</p>
+          </div>
+        </a>
+        <!-- Card 15 -->
+        <a href="https://riantrg01.github.io/rian-ebrosur/index.html" class="card" target="_blank" rel="noopener noreferrer" tabindex="0" aria-labelledby="title15 desc15">
+          <div class="card-image">
+            <img src="img/aplikasi/ebrosur.jpeg" alt="Card 15" />
+          </div>
+          <div class="card-text">
+            <h2 class="card-title" id="title15">E-Brosur</h2>
+            <p class="card-desc" id="desc15">Elektronik Brosur PN Gunung Sugih</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+  </main>
+  <footer class="w-full bg-white border-t mt-10 py-4">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+      &copy; 2025 Pengadilan Negeri Gunung Sugih Kelas IB. All rights reserved. | Developed by Dede Apriyansah
+    </div>
+  </footer>
+</body>
+
+</html>
